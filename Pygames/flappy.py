@@ -173,11 +173,10 @@ while True:
     ground_group.draw(screen)
     pipe_group.draw(screen)
 
-    
-
 
     pygame.display.update()
 
+    #If the bird collides with the floor or pipes, the code will stop
     if (pygame.sprite.groupcollide(bird_group, ground_group, False, False, pygame.sprite.collide_mask)
      or 
      pygame.sprite.groupcollide(bird_group, pipe_group, False, False, pygame.sprite.collide_mask)):

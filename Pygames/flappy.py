@@ -55,7 +55,8 @@ class Bird(pygame.sprite.Sprite):
 
         self.speed = -SPEED        
 
-
+   
+# generating the pipes
 class Pipe(pygame.sprite.Sprite):
 
     def __init__(self, inverted, xpos, ysize):
@@ -97,11 +98,11 @@ class Ground(pygame.sprite.Sprite):
     def update(self):
         self.rect[0] -= GAME_SPEED
 
-
+#function for off-screen pixels
 def is_off_screen(sprite):
     return sprite.rect[0] <- (sprite.rect[2])
 
-
+# function for create random pipes
 def get_random_pipes(xpos):
     size = random.randint(100, 300)
     pipe = Pipe(False, xpos, size)
@@ -115,6 +116,7 @@ screen = pygame.display.set_mode((SCREEN_WIDTH,SCREEN_HEIGHT ))
 BACKGROUD = pygame.image.load('background-day.png')
 BACKGROUD = pygame.transform.scale(BACKGROUD, (SCREEN_WIDTH,SCREEN_HEIGHT))
 
+#images gruops
 bird_group = pygame.sprite.Group()
 bird =Bird()
 bird_group.add(bird)
@@ -131,6 +133,7 @@ for i in range(2):
     pipe_group.add(pipes[1])
 
 clock = pygame.time.Clock()
+
 
 while True:
     clock.tick(25)
@@ -160,11 +163,12 @@ while True:
         pipe_group.add(pipes[1])
 
 
-
+    #update image groups
     bird_group.update()
     ground_group.update()
     pipe_group.update()
 
+    #draw the images on the screen
     bird_group.draw(screen)    
     ground_group.draw(screen)
     pipe_group.draw(screen)
